@@ -8,7 +8,7 @@ createGrid(16)
 gridButton.addEventListener('click', (e) => {
   const gridCount = prompt('Enter Grid count: ')
   if (typeof +gridCount === 'number') {
-    if (gridCount <= 100) {
+    if (gridCount > 0 && gridCount <= 100) {
       clearGridContainer()
       createGrid(gridCount)
     }
@@ -16,11 +16,13 @@ gridButton.addEventListener('click', (e) => {
 })
 
 function createGrid(count) {
-  gridCount = count * count
+  const gridCount = count * count
+  const val = (360 / +count) // 360px is the grid container's dimension
   for(i=0; i<gridCount; i++) {
     const square = document.createElement('div')
+    square.setAttribute('style', `width: ${val}px;height: ${val}px;`)
     square.addEventListener('mouseover', (e) => {
-      square.setAttribute('style', `background-color: ${hoverColor}`)
+      square.style.backgroundColor = hoverColor;
     }, false)
     gridContainer.appendChild(square)
   }
