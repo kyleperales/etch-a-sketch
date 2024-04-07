@@ -1,7 +1,7 @@
 const mainContainer = document.querySelector('#main-container')
 const gridContainer = document.querySelector('#grid-container')
 const gridButton = document.querySelector('#grid-button')
-const hoverColor = '#000000'
+// const hoverColor = '#000000'
 
 createGrid(16)
 
@@ -22,7 +22,8 @@ function createGrid(count) {
     const square = document.createElement('div')
     square.setAttribute('style', `width: ${val}px;height: ${val}px;`)
     square.addEventListener('mouseover', (e) => {
-      square.style.backgroundColor = hoverColor;
+      const randomHexValue = Math.floor(Math.random() * 1000)
+      square.style.backgroundColor = `#${randomHexValue}`
     }, false)
     gridContainer.appendChild(square)
   }
